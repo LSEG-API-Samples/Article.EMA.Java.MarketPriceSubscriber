@@ -56,7 +56,7 @@ The _MarketPriceSubscriber_ is a command line tool you can use to retrieve marke
 
 ### Make sure the _ValueAddObjectsForEMA_ submodule is downloaded
 
-Before you start building the project make sure the _ValueAddObjectsForEMA_ submodule is properly downloaded. To this aim list the files conatined into the _./ValueAddObjectsForEMA_ directory. This directory should contain several script and source files. If it's empty, please run the following Git commands in the root directory of your _MarkePriceSubscriber_ project: 
+Before you start building the project make sure the _ValueAddObjectsForEMA_ submodule is properly downloaded. To this aim list the files of the _./ValueAddObjectsForEMA_ directory. This directory should contain several script and source files. If it's empty, please run the following Git commands in the root directory of your _MarkePriceSubscriber_ project: 
 
     git submodule init
     git submodule update
