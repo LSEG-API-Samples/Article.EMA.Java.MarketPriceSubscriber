@@ -16,7 +16,12 @@ JAR=$JAVA_HOME/bin/jar
 
 CLASSPATH=$BINDIR:$VALUE_ADD_OBJECTS_FOR_EMA_HOME/dist/ValueAddObjectsForEMA.jar:lib/commons-cli-1.4.jar:lib/json-20160810.jar
 
-cd ValueAddObjectsForEMA
+if [ ! -d "$VALUE_ADD_OBJECTS_FOR_EMA_HOME"  ||  ! -e "$VALUE_ADD_OBJECTS_FOR_EMA_HOME/build.ksh" ]; then
+  printf "The $VALUE_ADD_OBJECTS_FOR_EMA_HOME submodule is missing or incomplete.\n"
+  exit -1
+fi
+
+cd $VALUE_ADD_OBJECTS_FOR_EMA_HOME
 build.ksh
 cd ..
 

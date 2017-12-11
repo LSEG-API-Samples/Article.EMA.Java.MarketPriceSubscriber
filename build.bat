@@ -18,13 +18,15 @@ set JAR="%JAVA_HOME%\bin\jar"
 
 set CLASSPATH=%BINDIR%;%VALUE_ADD_OBJECTS_FOR_EMA_HOME%/dist/ValueAddObjectsForEMA.jar;lib/commons-cli-1.4.jar;lib/json-20160810.jar
 
+if not exist %VALUE_ADD_OBJECTS_FOR_EMA_HOME% goto :NO_SUBMODULE
+if not exist %VALUE_ADD_OBJECTS_FOR_EMA_HOME%\build.bat goto :NO_SUBMODULE
+
 cd ValueAddObjectsForEMA
 call build.bat
 cd ..
 
 if not exist %BINDIR% (mkdir %BINDIR%)
 if not exist %DISTDIR% (mkdir %DISTDIR%)
-
 echo Building the MarketPriceSubscriber application...
 %JAVAC% -Xlint -d %BINDIR% src\com\thomsonreuters\platformservices\elektron\tools\marketprice\*.java
 if %errorlevel% neq 0 goto :ERROR
@@ -34,6 +36,11 @@ echo Building the jar file...
 if %errorlevel% neq 0 goto :ERROR
 
 goto :DONE
+
+:NO_SUBMODULE
+echo.
+echo The %VALUE_ADD_OBJECTS_FOR_EMA_HOME% submodule is missing or incomplete.
+goto :ERROR
 
 :ERROR
 echo.
