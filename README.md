@@ -54,6 +54,13 @@ The _MarketPriceSubscriber_ is a command line tool you can use to retrieve marke
 
 ## <a id="building-the-marketpricesubscriber" name="building-the-marketpricesubscriber"></a>Building the _MarkePriceSubscriber_ and the _ValueAddObjectsForEMA_
 
+### Make sure the _ValueAddObjectsForEMA_ submodule is downloaded
+
+Before you start building the project make sure the _ValueAddObjectsForEMA_ submodule is properly downloaded. To this aim list the files conatined into the _./ValueAddObjectsForEMA_ directory. This directory should contain several script and source files. If it's empty, please run the following Git commands in the root directory of your _MarkePriceSubscriber_ project: 
+
+    git submodule init
+    git submodule update
+
 ### Set the required environment variables
 
 This package includes some convenient files which will enable the developer to quickly build and run the example application. These scripts depend on the *JAVA_HOME* and *ELEKTRON_JAVA_HOME* environment variables. These variables must be set appropriately before you run any of the *build* or *run* scripts.
@@ -163,6 +170,15 @@ This is the same example with the json mode activated:
 Please refer to the related [README](https://github.com/TR-API-Samples/Example.EMA.Java.ValueAddObjectsForEMA/blob/master/MarketPrice-README.md) file of the _ValueAddObjectsForEMA_.
 
 ## <a id="troubleshooting"></a>Troubleshooting
+
+**Q: When I build the application, I get a "ValueAddObjectsForEMA submodule is missing or incomplete" error**
+
+**A:** The _ValueAddObjectsForEMA_ submodule that is required by the _Article.EMA.Java.MarketPriceSubscriber_ project is not downloaded or is incomplete. To download the _ValueAddObjectsForEMA_ submodule, exetute the following Git command from the directory where you cloned the _Article.EMA.Java.MarketPriceSubscriber_ repository. Like this:
+
+    git submodule init
+    git submodule update
+
+<br>
 
 **Q: When I build or run the application, it fails with an error like:**
 
