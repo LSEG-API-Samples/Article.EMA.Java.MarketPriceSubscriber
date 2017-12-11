@@ -1,0 +1,42 @@
+<launch4jConfig>
+  <headerType>console</headerType>
+  <outfile>..\..\dist\marketprice-subscriber\marketprice-subscriber.exe</outfile>
+  <jar>..\..\dist\MarketPriceSubscriber.jar</jar>
+  <classPath>
+    <mainClass>com.thomsonreuters.platformservices.elektron.tools.marketprice.MarketPriceSubscriber</mainClass>
+    <cp>..\..\ValueAddObjectsForEMA\dist\ValueAddObjectsForEMA.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\ema.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\lib\upa.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\upaValueAdd.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\slf4j-api-1.7.12.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\slf4j-jdk14-1.7.12.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\commons-configuration-1.10.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\commons-logging-1.2.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\commons-lang-2.6.jar</cp>
+    <cp>..\..\ValueAddObjectsForEMA\dist\org.apache.commons.collections.jar</cp>
+    <cp>..\..\lib\commons-cli-1.4.jar</cp>
+    <cp>..\..\lib\json-20160810.jar</cp>
+  </classPath>
+  <jre>
+    <minVersion>1.8.0</minVersion>
+    <opt>-Djava.util.logging.config.file=.\logging.properties</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.0.0.0</txtFileVersion>
+    <fileDescription>Command line tool for market prices published on Thomson Reuters platforms (TREP or Elektron)</fileDescription>
+    <copyright>text</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>1.0.0.0</txtProductVersion>
+    <productName>marketprice-subscriber</productName>
+    <companyName>Thomson Reuters</companyName>
+    <internalName>marketprice-subscriber</internalName>
+    <originalFilename>marketprice-subscriber.exe</originalFilename>
+  </versionInfo>
+  <messages>
+    <startupErr>Startup error - Can't start the marketprice-subscriber</startupErr>
+    <bundledJreErr>Bundled JRE error - Can't start the marketprice-subscriber</bundledJreErr>
+    <jreVersionErr>JRE version error - Can't start the marketprice-subscriber</jreVersionErr>
+    <launcherErr>Launcher error - Can't start the marketprice-subscriber</launcherErr>
+  </messages>
+</launch4jConfig>

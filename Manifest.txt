@@ -1,0 +1,2 @@
+Class-Path: ElektronObjectsSDK.jar
+Main-Class: com.thomsonreuters.platformservices.elektron.tools.marketprice.MarketPriceSubscriber

@@ -1,0 +1,3 @@
+[submodule "ValueAddObjectsForEMA"]
+	path = ValueAddObjectsForEMA
+	url = https://github.com/TR-API-Samples/Example.EMA.Java.ValueAddObjectsForEMA.git
