@@ -2,13 +2,17 @@
  * Copyright 2017 Thomson Reuters
  *
  * DISCLAIMER: This source code has been written by Thomson Reuters for the only 
- * purpose of illustrating the "Decoding chains" article published on the 
- * Thomson Reuters Developer Community. It has not been tested for a usage in 
- * production environments.
+ * purpose of illustrating articles published on the Thomson Reuters Developer 
+ * Community. It has not been tested for usage in production environments. 
+ * Thomson Reuters cannot be held responsible for any issues that may happen if 
+ * these objects or the related source code is used in production or any other 
+ * client environment.
  *
  * Thomson Reuters Developer Community: https://developers.thomsonreuters.com
- * TODO ..... A Simple Market Price object - Part 1: https://developers.thomsonreuters.com/article/elektron-article-1
- * TODO ..... A Simple Market Price object - Part 2: https://developers.thomsonreuters.com/article/elektron-article-2
+ *
+ * Related Articles:
+ *   A Simple MarketPrice object for EMA - Part 1: https://developers.thomsonreuters.com/article/simple-marketprice-object-ema-part-1
+ *   A Simple MarketPrice object for EMA - Part 2: https://developers.thomsonreuters.com/article/simple-marketprice-object-ema-part-2
  *
  */
 package com.thomsonreuters.platformservices.elektron.tools.marketprice;
@@ -44,7 +48,7 @@ import org.json.JSONObject;
 /**
  * Main application class that implements the main method and the whole 
  * application logic from the arguments interpretation to the data output 
- * in text or JASON format.
+ * in text or JSON format.
  */
 class MarketPriceSubscriber
 {
