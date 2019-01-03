@@ -78,9 +78,11 @@ The _MarketPriceSubscriber_ application doesn't need these changes as the **serv
 
 ### Run the *build* script
 
-Once these environment variables setup and hardcoded values are properly set, you must run the *build.bat* or the *build.ksh* script to build the _ValueAddObjectsForEMA_ and the _MarketPriceSubscriber_ application.
+Once these environment variables setup and hardcoded values are properly set, you must run the *build-with-esdk-x.x.x.bat* or the *build-with-esdk-x.x.x.ksh* script to build the _ValueAddObjectsForEMA_ example library and the _MarketPriceSubscriber_ application. 
 
-**Note:** Alternatively to the build scripts, you can use the NetBeans IDE to build the applications. NetBeans 8.2 project files are provided with the applications source code.    
+_**Notes:** The build script to be used must match the version of your installed Elektron SDK. For example: If you installed Elektron SDK 1.1.1 on a Windows machine then you should use the "build-with-esdk-1.1.x.bat" script. On the other hand, if you installed Elektron SDK 1.2.2 on a Linux machine then you should use the "build-with-esdk-1.2.2.ksh" script._
+
+_Alternatively to the build scripts, you can use the NetBeans IDE to build the applications. NetBeans 8.2 project files are provided with the applications source code._
 
 ## <a id="running-the-marketpricesubscriber"></a>Running the _MarketPriceSubscriber_
 
