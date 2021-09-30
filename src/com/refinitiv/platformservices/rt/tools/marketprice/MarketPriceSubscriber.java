@@ -15,7 +15,7 @@
  *   A Simple MarketPrice object for EMA - Part 2: https://developers.thomsonreuters.com/article/simple-marketprice-object-ema-part-2
  *
  */
-package com.refinitiv.platformservices.elektron.tools.marketprice;
+package com.refinitiv.platformservices.rt.tools.marketprice;
 
 import com.refinitiv.ema.access.DataType.DataTypes;
 import com.refinitiv.ema.access.EmaFactory;
@@ -29,9 +29,9 @@ import com.refinitiv.ema.access.OmmInt;
 import com.refinitiv.ema.access.OmmReal;
 import com.refinitiv.ema.access.OmmState;
 import com.refinitiv.ema.access.OmmUInt;
-import com.refinitiv.platformservices.elektron.objects.common.Dispatcher;
-import com.refinitiv.platformservices.elektron.objects.data.Field;
-import com.refinitiv.platformservices.elektron.objects.marketprice.MarketPrice;
+import com.refinitiv.platformservices.rt.objects.common.Dispatcher;
+import com.refinitiv.platformservices.rt.objects.data.Field;
+import com.refinitiv.platformservices.rt.objects.marketprice.MarketPrice;
 import static java.lang.System.exit;
 import static java.lang.System.out;
 import java.util.Collection;
