@@ -3,7 +3,7 @@ The marketprice-subscriber command line tool
 ============================================
 
 This application allows you to subscribe from the command line to market prices
-published on Thomson Reuters real-time platforms (TREP or Elektron). You can
+published on Refinitiv real-time platforms (RTDS or Refinitiv Real-Time). You can
 subscribe either in streaming mode or in snapshot mode (without updates).
 Fields values received for the market price are displayed on the consoled 
 either in text or JSON format. The application accepts options and arguments
@@ -17,13 +17,11 @@ Running the marketprice-Subscriber
 ----------------------------------
 
 Before you start the application you must configure the EmaConfig.xml file
-to specify the host name of the server of the TREP or Elektron platform to
+to specify the host name of the server of the RTDS or Refinitiv Real-Time platform to
 which the marketprice-subscriber connects to. This is set thanks to the value
 of the <ChannelGroup><ChannelList><Channel><Host> node. This value can be a
 remote host name or IP address.
 
-The marketprice-subscriber application also requires the JAVA_HOME environment
-variable to be set. The minimum java version required is 1.8.0.0.
 
 usage: marketprice-subscriber [-nv] [-wu] [-s service-name] [-u user-name]
                               marketprice-name
@@ -32,7 +30,7 @@ options:
                            JSON format.
  -nv,--non-verbose         Enables the non verbose mode. Only images
                            (a.k.a. Refresh) and updates are displayed.
- -s,--service-name <arg>   Elektron or TREP service name
+ -s,--service-name <arg>   Refinitiv Real-Time or RTDS service name
                            Default value: ELEKTRON_DD
  -u,--user-name <arg>      DACS user name
                            Default value: System user name
