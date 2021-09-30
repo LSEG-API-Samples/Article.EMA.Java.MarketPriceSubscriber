@@ -15,23 +15,23 @@
  *   A Simple MarketPrice object for EMA - Part 2: https://developers.thomsonreuters.com/article/simple-marketprice-object-ema-part-2
  *
  */
-package com.thomsonreuters.platformservices.elektron.tools.marketprice;
+package com.refinitiv.platformservices.elektron.tools.marketprice;
 
-import com.thomsonreuters.ema.access.DataType.DataTypes;
-import com.thomsonreuters.ema.access.EmaFactory;
-import com.thomsonreuters.ema.access.OmmConsumer;
-import com.thomsonreuters.ema.access.OmmConsumerConfig;
-import static com.thomsonreuters.ema.access.OmmConsumerConfig.OperationModel.USER_DISPATCH;
-import com.thomsonreuters.ema.access.OmmDouble;
-import com.thomsonreuters.ema.access.OmmException;
-import com.thomsonreuters.ema.access.OmmFloat;
-import com.thomsonreuters.ema.access.OmmInt;
-import com.thomsonreuters.ema.access.OmmReal;
-import com.thomsonreuters.ema.access.OmmState;
-import com.thomsonreuters.ema.access.OmmUInt;
-import com.thomsonreuters.platformservices.elektron.objects.common.Dispatcher;
-import com.thomsonreuters.platformservices.elektron.objects.data.Field;
-import com.thomsonreuters.platformservices.elektron.objects.marketprice.MarketPrice;
+import com.refinitiv.ema.access.DataType.DataTypes;
+import com.refinitiv.ema.access.EmaFactory;
+import com.refinitiv.ema.access.OmmConsumer;
+import com.refinitiv.ema.access.OmmConsumerConfig;
+import static com.refinitiv.ema.access.OmmConsumerConfig.OperationModel.USER_DISPATCH;
+import com.refinitiv.ema.access.OmmDouble;
+import com.refinitiv.ema.access.OmmException;
+import com.refinitiv.ema.access.OmmFloat;
+import com.refinitiv.ema.access.OmmInt;
+import com.refinitiv.ema.access.OmmReal;
+import com.refinitiv.ema.access.OmmState;
+import com.refinitiv.ema.access.OmmUInt;
+import com.refinitiv.platformservices.elektron.objects.common.Dispatcher;
+import com.refinitiv.platformservices.elektron.objects.data.Field;
+import com.refinitiv.platformservices.elektron.objects.marketprice.MarketPrice;
 import static java.lang.System.exit;
 import static java.lang.System.out;
 import java.util.Collection;
@@ -58,8 +58,14 @@ class MarketPriceSubscriber
     // Name of the market price instrument
     private static String instrumentName = "";
     
-    // Data Access Control System (DACS) username. 
-    private static String dacsUserName = "";
+    // Data Access Control System (DACS) username/RRTO MashineId 
+    private static String userName = "";
+    
+     //RRTO password keyfile keypassword clientid
+    private static String password = "";
+    private static String keyfile = "";
+    private static String keypassword = "";
+    private static String clientid = "";
     
     // Indicates if the chain should be oppened in Snapshot ro Streaming mode. 
     private static boolean withUpdates = false;    
@@ -129,6 +135,8 @@ class MarketPriceSubscriber
      */
     private static void createOmmConsumerAndDispatcher()
     {
+        boolean sessionMgmt = false;
+        
         if(ommConsumer != null)
             return;
         
@@ -137,12 +145,30 @@ class MarketPriceSubscriber
             OmmConsumerConfig config = EmaFactory.createOmmConsumerConfig()
                     .operationModel(USER_DISPATCH);
             
-            if(!dacsUserName.isEmpty())
+            if(!userName.isEmpty())
             {
-                config.username(dacsUserName);
+                config.username(userName);
             }
-            
-            ommConsumer = EmaFactory.createOmmConsumer(config);
+            if(!keyfile.isEmpty())
+            {
+                sessionMgmt = true;
+                config.tunnelingKeyStoreFile(keyfile);
+		config.tunnelingSecurityProtocol("TLS");                       
+            }
+            if(!keypassword.isEmpty())
+            {
+                config.tunnelingKeyStorePasswd(keypassword);
+            }
+            if(!clientid.isEmpty())
+            {
+                config.clientId(clientid);
+            }
+            if(sessionMgmt) {
+                ommConsumer = EmaFactory.createOmmConsumer(config.consumerName("Consumer_4").username(userName).password(password));
+
+            } else {
+                ommConsumer = EmaFactory.createOmmConsumer(config);
+            }
             
             dispatcher = new Dispatcher.Builder()
                                 .withOmmConsumer(ommConsumer)
@@ -189,6 +215,7 @@ class MarketPriceSubscriber
                 System.out.println("  >>> New Update received");
 
             print(marketPrice, UPDATE, update);
+            print(marketPrice, "ALLFIELDS", marketPrice.getFields());
         };
 
         MarketPrice.OnStateFunction printState = (marketPrice, state) -> 
@@ -438,7 +465,7 @@ class MarketPriceSubscriber
      */
     private static void analyzeArguments(String[] args)
     {        
-        String syntax = "marketprice-subscriber [-nv] [-wu] [-s service-name] [-u user-name] marketprice-name";
+        String syntax = "marketprice-subscriber [-nv] [-wu] [-s service-name] [-u user-name] [-p password] [-kf keyfile] [-kp keypassword] [-c clientid] marketprice-name";
         String header = "options:";
 
         Options options = new Options();
@@ -447,9 +474,25 @@ class MarketPriceSubscriber
         serviceNameOption.setRequired(false);
         options.addOption(serviceNameOption);
 
-        Option dacsUserNameOption = new Option("u", "user-name", true, "DACS user name\nDefault value: System user name");
-        dacsUserNameOption.setRequired(false);
-        options.addOption(dacsUserNameOption);
+        Option userNameOption = new Option("u", "user-name", true, "DACS user name or RRTO machineId\nDefault value: System user name");
+        userNameOption.setRequired(false);
+        options.addOption(userNameOption);
+        
+        Option passwordOption = new Option("p", "password", true, "RRTO password\nDefault value: no");
+        passwordOption.setRequired(false);
+        options.addOption(passwordOption);
+        
+        Option keyfileOption = new Option("kf", "keyfile", true, "keyfile");
+        keyfileOption.setRequired(false);
+        options.addOption(keyfileOption);
+        
+        Option keypasswordOption = new Option("kp", "keypassword", true, "keypassword");
+        keypasswordOption.setRequired(false);
+        options.addOption(keypasswordOption);
+        
+        Option clientidOption = new Option("c", "clientid", true, "clientid");
+        clientidOption.setRequired(false);
+        options.addOption(clientidOption);
 
         Option optimizationOption = new Option("wu", "with-updates", false, "Enables updates. When this option activated, the market price is opened in streaming mode. The applications displays received images and updates until it's terminated.");
         optimizationOption.setRequired(false);
@@ -499,7 +542,23 @@ class MarketPriceSubscriber
         }
         if(cmd.hasOption("user-name"))
         {        
-            dacsUserName = cmd.getOptionValue("user-name");
+            userName = cmd.getOptionValue("user-name");
+        }
+        if(cmd.hasOption("password"))
+        {        
+            password = cmd.getOptionValue("password");
+        }
+        if(cmd.hasOption("keyfile"))
+        {        
+            keyfile = cmd.getOptionValue("keyfile");
+        }
+        if(cmd.hasOption("keypassword"))
+        {        
+            keypassword = cmd.getOptionValue("keypassword");
+        }
+        if(cmd.hasOption("clientid"))
+        {        
+            clientid = cmd.getOptionValue("clientid");
         }
         if(cmd.hasOption("with-updates"))
         {        
@@ -524,7 +583,11 @@ class MarketPriceSubscriber
         System.out.println("  >>> Input arguments and options:");
         System.out.println("\tmarketprice-name: \"" + instrumentName + "\"");
         System.out.println("\tservice-name    : \"" + serviceName + "\"");
-        System.out.println("\tuser-name       : \"" + dacsUserName + "\"");
+        System.out.println("\tuser-name       : \"" + userName + "\"");
+        System.out.println("\tpassword       : \"" + password + "\"");
+        System.out.println("\tkeyfile       : \"" + keyfile + "\"");
+        System.out.println("\tkeypassword       : \"" + keypassword + "\"");
+        System.out.println("\tclientid       : \"" + clientid + "\"");
         if(withUpdates)
         {
             System.out.println("\twith-updates    : enabled");       
