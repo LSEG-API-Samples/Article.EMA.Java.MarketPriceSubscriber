@@ -10,9 +10,9 @@
 
 * [Applications design](#application-design)
 
-* [Building the _MarkePriceSubscriber_ and the _ValueAddObjectsForEMA_](#building-the-marketpricesubscriber)
+* [Building the _MarketPriceSubscriber_ and the _ValueAddObjectsForEMA_](#building-the-marketpricesubscriber)
 
-* [Running the _MarkePriceSubscriber_](#running-the-marketpricesubscriber)
+* [Running the _MarketPriceSubscriber_](#running-the-marketpricesubscriber)
 
 * [Running the _MarketPriceStepByStepExample_](#running-the-marketpricestepbystepexample)
 
