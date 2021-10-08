@@ -1,2 +1,2 @@
 Class-Path: ValueAddObjectsForEMA.jar
-Main-Class: com.thomsonreuters.platformservices.elektron.tools.marketprice.MarketPriceSubscriber
+Main-Class: com.refinitiv.platformservices.elektron.tools.marketprice.MarketPriceSubscriber
