@@ -3,7 +3,7 @@
   <outfile>..\..\dist\marketprice-subscriber\marketprice-subscriber.exe</outfile>
   <jar>..\..\dist\MarketPriceSubscriber.jar</jar>
   <classPath>
-    <mainClass>com.thomsonreuters.platformservices.elektron.tools.marketprice.MarketPriceSubscriber</mainClass>
+    <mainClass>com.refinitiv.platformservices.rt.tools.marketprice.MarketPriceSubscriber</mainClass>
     <cp>..\..\ValueAddObjectsForEMA\dist\ValueAddObjectsForEMA.jar</cp>
     <cp>..\..\ValueAddObjectsForEMA\dist\ema.jar</cp>
     <cp>..\..\ValueAddObjectsForEMA\dist\lib\upa.jar</cp>
@@ -24,12 +24,12 @@
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
     <txtFileVersion>1.0.0.0</txtFileVersion>
-    <fileDescription>Command line tool for market prices published on Thomson Reuters platforms (TREP or Elektron)</fileDescription>
+    <fileDescription>Command line tool for market prices published on Refinitiv platforms (RTDS or Elektron)</fileDescription>
     <copyright>text</copyright>
     <productVersion>1.0.0.0</productVersion>
     <txtProductVersion>1.0.0.0</txtProductVersion>
     <productName>marketprice-subscriber</productName>
-    <companyName>Thomson Reuters</companyName>
+    <companyName>Refinitiv</companyName>
     <internalName>marketprice-subscriber</internalName>
     <originalFilename>marketprice-subscriber.exe</originalFilename>
   </versionInfo>
